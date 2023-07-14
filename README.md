@@ -1,7 +1,9 @@
 # Namaste React
 
 # Parcel
+
 <!-- execute(npx) the parcel command (which is responsible for making the build) -->
+
 - npx parcel index.html
 - Dev Build
 - Local Server
@@ -19,3 +21,24 @@
 - Error Handling
 - Tree Shaking - remove unused code
 - Different bundles for dev and prod
+
+# FOOD DELIVERY APP
+
+<!-- // - Header
+// - Logo
+// - NavBar
+
+// - Body
+// Search
+// Restaurant Container
+// - Restaurant Card
+// - Image
+// - Name
+// - Rating
+// - Address
+//  - Footer -->
+
+# Episode 5
+
+- lets get hooked - learnt about useState, and on every state change the UI rerenders
+- Reconciliation, react fiber(algorithm), diff algorithm
