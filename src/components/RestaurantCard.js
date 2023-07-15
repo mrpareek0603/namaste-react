@@ -1,11 +1,19 @@
 import { CARD_IMAGE } from "../utils/constants";
+import {useEffect,useState} from "react";
+const RestaurantCard = ({ resData }) => {
+  const [counter,setCounter] = useState(0);
 
-const RestaurantCard = ({resData}) => {
-  console.log('----------inside restaurant card component',resData);
+  useEffect(() => {
+    setCounter(counter + 1);
+    console.log("Counter value: ", counter);
+  }, [counter]);
+
+
   return (
     <div className="res-card">
       <img alt="res1" src={CARD_IMAGE + resData.data.data.cloudinaryImageId} />
-      <h3>{resData.data.data.name}</h3>
+      <h2>{resData.data.data.name}</h2>
+      <h3>{resData.data.data.cuisines.join(", ")}</h3>
       <p>{resData.data.data.avgRating}</p>
     </div>
   );

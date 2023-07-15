@@ -21,13 +21,37 @@ ul>li {
     margin-top: 5px;
 }
 
-.filter-btn{
+.shimmer-container {
+    margin-top: 5px;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card {
+    background-color: #f0f0f0;
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    height: 250px;
+}
+
+.filter {
+    display: flex;
+}
+
+.search {
+    margin: 10px;
+}
+
+.topRated-btn {
     margin: 10px;
     cursor: pointer;
 }
 
-.res-container{
+.res-container {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .res-card {
@@ -35,21 +59,16 @@ ul>li {
     margin: 10px;
     padding: 10px;
     width: 200px;
-    height: 250px;
-    transition: 0.3s;
+    /* height: 250px; */
+    transition: 0.2s ease-in-out;
 }
 
-.res-card:hover{
-    transition: 0.5s;
-    border: 1px solid black;
-    
-    /* border-radius: 10%; */
+.res-card:hover {
+    transition: 0.1s;    
+    box-shadow: 5px 5px rgb(218, 203, 203);
+    cursor: pointer;
 }
 
 .res-card>img {
     width: 100%;
-}
-
-.search {
-    margin: 10px;
 }

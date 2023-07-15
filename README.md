@@ -42,3 +42,9 @@
 
 - lets get hooked - learnt about useState, and on every state change the UI rerenders
 - Reconciliation, react fiber(algorithm), diff algorithm
+
+
+# Episode 6
+- Added Shimmer UI
+- Added Search functionality (used onChange on input)
+- Used another state variable (searchedResults) for search functionality
