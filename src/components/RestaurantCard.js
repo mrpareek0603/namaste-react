@@ -1,13 +1,13 @@
 import { CARD_IMAGE } from "../utils/constants";
-import {useEffect,useState} from "react";
+import { useEffect, useState } from "react";
 const RestaurantCard = ({ resData }) => {
-  const [counter,setCounter] = useState(0);
+  const [counter, setCounter] = useState(0);
 
-  useEffect(() => {
-    setCounter(counter + 1);
-    console.log("Counter value: ", counter);
-  }, [counter]);
-
+  // will go to infinte rendering
+  // useEffect(() => {
+  //   setCounter(counter + 1);
+  //   console.log("Counter value: ", counter);
+  // }, [counter]);
 
   return (
     <div className="res-card">

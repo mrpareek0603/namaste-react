@@ -43,8 +43,20 @@
 - lets get hooked - learnt about useState, and on every state change the UI rerenders
 - Reconciliation, react fiber(algorithm), diff algorithm
 
-
 # Episode 6
+
 - Added Shimmer UI
 - Added Search functionality (used onChange on input)
 - Used another state variable (searchedResults) for search functionality
+
+# Episode 7
+
+- Added react-router-dom and created routing using "createBrowserRouter"
+- Used <RouterProvider /> component and added "appRouter" object as router to it
+- Used <Error /> component to show any error, used "useRouteError()" hook inside for the same
+- added children array inside "approuter" and added <Outlet /> component inside <AppLayout />
+- added <Link> </Link> in Header component for navigation
+- above is static routing
+- ---------Below Dynamic Routing, we will make dynamic routes for every restaurant
+- Added "/restaurant/:id" for particular restaurant in appRouter
+- Added <RestaurantPage /> component which shows Retaurant details(name,menu etc)

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div className="header">
@@ -9,15 +11,26 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <li>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link style={{ textDecoration: "none" }} to="/about">
+              About Us
+            </Link>
+          </li>
+          <li>
+            <Link style={{ textDecoration: "none" }} to="/contact">
+              Contact Us
+            </Link>
+          </li>
           <li>Cart</li>
         </ul>
       </div>
     </div>
   );
 };
-
 
 export default Header;

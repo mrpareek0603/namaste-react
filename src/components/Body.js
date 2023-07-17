@@ -1,19 +1,22 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import Shimmer from "./Shimmer";
+import { RESTAURANT_URL } from "../utils/constants";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchedResults, setSearchedResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  console.log("-----body rendered");
-  //
+
+  // side effect(after render)
   useEffect(() => {
     console.log("useEffect called");
     fetchData();
   }, []);
 
-  //
+  // API call
   const fetchData = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&offset=15&sortBy=RELEVANCE&pageType=SEE_ALL&page_type=DESKTOP_SEE_ALL_LISTING"
@@ -30,6 +33,7 @@ const Body = () => {
   return (
     <div className="body">
       <div className="filter">
+        {/* Search Feature */}
         <div className="search">
           {/* SEARCH FEATURE */}
           <input
@@ -67,7 +71,7 @@ const Body = () => {
           className="topRated-btn"
           onClick={() => {
             const filteredResList = listOfRestaurants.filter(
-              (res) => res.data.data.avgRating > 3
+              (res) => res.data.data.avgRating > 4
             );
             setSearchedResults(filteredResList);
           }}
@@ -75,10 +79,16 @@ const Body = () => {
           Top Rated
         </button>
       </div>
+      {/* restaurant contaier */}
       <div className="res-container">
         {/* using{} because we will write Javascript inside jsx hence '{}' are required to do so */}
         {searchedResults.map((restaurant) => (
-          <RestaurantCard key={restaurant.data.data.id} resData={restaurant} />
+          <Link
+            key={restaurant.data.data.id}
+            to={"/restaurant/" + restaurant.data.data.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
