@@ -91,13 +91,11 @@ ul>li {
 
 .res-page-items{
     list-style: none;
-    display: flex;
-    justify-content:space-around;
-    /* flex-wrap: wrap; */
 }
-.res-page-items>li{
+.res-page-items>div{
     background-color: #f0f0f0;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .user-card {

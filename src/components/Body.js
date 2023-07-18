@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import Shimmer from "./Shimmer";
 import { RESTAURANT_URL } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -27,8 +28,15 @@ const Body = () => {
     setSearchedResults(json?.data?.cards);
   };
 
+  // get online status
+  const onlineStatus = useOnlineStatus();
+
+  // check online status
+  if(!onlineStatus) return <h1>Looks like you are offline! Please check yur internet connection</h1>
+
   // Shimmer UI
   if (listOfRestaurants.length === 0) return <Shimmer />;
+
   //
   return (
     <div className="body">

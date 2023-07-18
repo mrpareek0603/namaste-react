@@ -65,3 +65,9 @@
 
 - Created <UserClass /> class component
 - First constructor runs, then the render method and the componentDidMount is execute
+- etc.
+
+# Episode 9
+
+- Custom hooks
+- Lazy loading/Code Splitting/Dynamic Import/Chunking/Dynamic Bundling/On demand loading - all are same
