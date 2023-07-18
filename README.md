@@ -60,3 +60,8 @@
 - ---------Below Dynamic Routing, we will make dynamic routes for every restaurant
 - Added "/restaurant/:id" for particular restaurant in appRouter
 - Added <RestaurantPage /> component which shows Retaurant details(name,menu etc)
+
+# Episode 8
+
+- Created <UserClass /> class component
+- First constructor runs, then the render method and the componentDidMount is execute
