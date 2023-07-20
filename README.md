@@ -71,3 +71,13 @@
 
 - Custom hooks
 - Lazy loading/Code Splitting/Dynamic Import/Chunking/Dynamic Bundling/On demand loading - all are same
+
+# Episode 10
+
+- Added tailwing and postcss
+- configured tailwind and .potcssrc
+
+# Episode 11
+
+- Used Higher Order Component to show "Promoted" restaurants
+- HOC takes a component, add some functionalities to it and return the same component

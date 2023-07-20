@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { RESTAURANT_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { withPromotedLabel } from "./RestaurantCard";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -28,11 +29,17 @@ const Body = () => {
     setSearchedResults(json?.data?.cards);
   };
 
+  // provide Restaurant Card to higher order component
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
   // get online status
   const onlineStatus = useOnlineStatus();
 
   // check online status
-  if(!onlineStatus) return <h1>Looks like you are offline! Please check yur internet connection</h1>
+  if (!onlineStatus)
+    return (
+      <h1>Looks like you are offline! Please check yur internet connection</h1>
+    );
 
   // Shimmer UI
   if (listOfRestaurants.length === 0) return <Shimmer />;
@@ -40,11 +47,12 @@ const Body = () => {
   //
   return (
     <div className="body">
-      <div className="filter">
+      <div className="filter flex">
         {/* Search Feature */}
-        <div className="search">
+        <div className="search m-4 p-4">
           {/* SEARCH FEATURE */}
           <input
+            className="border border-solid border-black"
             value={searchInput}
             onChange={(e) => {
               setSearchInput(e.target.value);
@@ -62,6 +70,7 @@ const Body = () => {
             }}
           ></input>
           <button
+            className="px-3 py-1 m-2 bg-green-100 rounded-lg"
             onClick={() => {
               const searchResult = listOfRestaurants.filter((res) => {
                 return res.data.data.name
@@ -75,27 +84,34 @@ const Body = () => {
           </button>
         </div>
         {/* TOP RATED FEATURE */}
-        <button
-          className="topRated-btn"
-          onClick={() => {
-            const filteredResList = listOfRestaurants.filter(
-              (res) => res.data.data.avgRating > 4
-            );
-            setSearchedResults(filteredResList);
-          }}
-        >
-          Top Rated
-        </button>
+        <div className="search m-0 p-0 flex items-center">
+          <button
+            className="topRated-btn px-3 py-1 m-0 bg-gray-200 rounded-lg"
+            onClick={() => {
+              const filteredResList = listOfRestaurants.filter(
+                (res) => res.data.data.avgRating > 4
+              );
+              setSearchedResults(filteredResList);
+            }}
+          >
+            Top Rated
+          </button>
+        </div>
       </div>
       {/* restaurant contaier */}
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {/* using{} because we will write Javascript inside jsx hence '{}' are required to do so */}
         {searchedResults.map((restaurant) => (
           <Link
             key={restaurant.data.data.id}
             to={"/restaurant/" + restaurant.data.data.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {/* if promoted then pass HOC */}
+            {restaurant.data.data.promoted ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
