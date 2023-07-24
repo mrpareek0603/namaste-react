@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext, useState } from "react";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
+  const [btnNameReact, setBtnNameReact] = useState("Login");
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="header flex justify-between bg-pink-100 shadow-lg">
       <div className="logo-container">
-        <img className="w-30"
+        <img
+          className="w-30"
           alt="restaurant1"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7OCbzvRLLbTMEOxv1E5fFBQ4N2cfJW-PSg6MeEtLJ&s"
         />
@@ -34,6 +39,19 @@ const Header = () => {
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
+          <button
+            className="Login"
+            onClick={() => {
+              btnNameReact === "Login"
+                ? setBtnNameReact("Logout")
+                : setBtnNameReact("Login");
+            }}
+          >
+            {btnNameReact}
+          </button>
+          <span>
+            <p className="font-bold text-lg">{loggedInUser}</p>
+          </span>
         </ul>
       </div>
     </div>

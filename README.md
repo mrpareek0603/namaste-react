@@ -80,4 +80,8 @@
 # Episode 11
 
 - Used Higher Order Component to show "Promoted" restaurants
-- HOC takes a component, add some functionalities to it and return the same component
+- HOC takes a component, add some functionalities to it and return the same
+- Controlled/Uncontrolled Component
+- Lifting the state up (lifted showItems state from RestaurantCategory to RestaurantPage)
+- Part 04 (props drilling, context is one of the way to solve problem of props drilling)
+- Created UserContext, added in Header and About component
