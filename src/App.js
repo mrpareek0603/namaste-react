@@ -17,14 +17,14 @@ const AppLayout = () => {
 
   // authentication logic
   useEffect(() => {
-    //api call and send username and password
+    // make api call and send username
     const data = {
       name: "Rohan Pareek",
     };
     setUserName(data.name);
   }, []);
   return (
-    <UserContext.Provider value={{loggedInUser:userName}}>
+    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
       <div>
         <Header />
         {/* Outlet will be replaced by the child of AppLayout from appRouter object */}

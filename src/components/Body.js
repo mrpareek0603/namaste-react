@@ -1,9 +1,10 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 import Shimmer from "./Shimmer";
-import { RESTAURANT_URL } from "../utils/constants";
+// import { RESTAURANT_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { withPromotedLabel } from "./RestaurantCard";
 
@@ -12,6 +13,7 @@ const Body = () => {
   const [searchedResults, setSearchedResults] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
+  const { loggedInUser, setUserName } = useContext(UserContext);
   // side effect(after render)
   useEffect(() => {
     console.log("useEffect called");
@@ -84,7 +86,7 @@ const Body = () => {
           </button>
         </div>
         {/* TOP RATED FEATURE */}
-        <div className="search m-0 p-0 flex items-center">
+        <div className="search flex items-center">
           <button
             className="topRated-btn px-3 py-1 m-0 bg-gray-200 rounded-lg"
             onClick={() => {
@@ -96,6 +98,17 @@ const Body = () => {
           >
             Top Rated
           </button>
+        </div>
+        {/* Set Name through input box */}
+        <div className=" m-4 p-4">
+          <label>UserName: </label>
+          <input
+            className="m-4 border border-solid border-black"
+            value={loggedInUser}
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          ></input>
         </div>
       </div>
       {/* restaurant contaier */}

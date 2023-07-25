@@ -85,3 +85,4 @@
 - Lifting the state up (lifted showItems state from RestaurantCategory to RestaurantPage)
 - Part 04 (props drilling, context is one of the way to solve problem of props drilling)
 - Created UserContext, added in Header and About component
+- Created input in Nody, and changing its value calls the "setUserName" from the App.js and changes the userName in App.js from the Body.js

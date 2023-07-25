@@ -1,9 +1,9 @@
+import UserContext from "../utils/UserContext";
 import { CARD_IMAGE } from "../utils/constants";
-import { useState } from "react";
+import { useContext } from "react";
 
 const RestaurantCard = ({ resData }) => {
-  const [counter, setCounter] = useState(0);
-
+  const {loggedInUser} = useContext(UserContext)
   return (
     <div className="res-card m-4 p-4 w-[200px] bg-gray-100 hover:bg-gray-200 rounded-lg">
       <img
@@ -14,6 +14,7 @@ const RestaurantCard = ({ resData }) => {
       <h2 className="font-bold py-3 text-lg">{resData.data.data.name}</h2>
       <h3 className="font-bold mb-4">{resData.data.data.cuisines.join(", ")}</h3>
       <p><b>Average Rating:</b> {resData?.data?.data?.avgRating}</p>
+      <p>{loggedInUser}</p>
     </div>
   );
 };
