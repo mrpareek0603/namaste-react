@@ -2,17 +2,21 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { useContext, useState } from "react";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const onlineStatus = useOnlineStatus();
   const [btnNameReact, setBtnNameReact] = useState("Login");
   const { loggedInUser } = useContext(UserContext);
 
+  // subscribing to the store using selector
+  const cartItems = useSelector((store) => store.cart.items);
+
   return (
-    <div className="header flex justify-between bg-pink-100 shadow-lg">
+    <div className="header flex justify-between sm:bg-pink-100 md:bg-green-100 lg:bg-green-200 shadow-lg">
       <div className="logo-container">
         <img
-          className="w-30"
+          className="w-[100%]"
           alt="restaurant1"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7OCbzvRLLbTMEOxv1E5fFBQ4N2cfJW-PSg6MeEtLJ&s"
         />
@@ -35,11 +39,11 @@ const Header = () => {
               Contact Us
             </Link>
           </li>
-          <li className="px-4">Cart</li>
+          <li className="px-4 font-bold text-lg"><Link to={"/cart"}>Cart -({cartItems.length})</Link></li>
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <button
+          <li><button
             className="Login"
             onClick={() => {
               btnNameReact === "Login"
@@ -49,9 +53,10 @@ const Header = () => {
           >
             {btnNameReact}
           </button>
-          <span>
-            <p className="font-bold text-lg">{loggedInUser}</p>
-          </span>
+          </li>
+          <li>
+            <p className="font-bold text-lg pl-4">{loggedInUser}</p>
+          </li>
         </ul>
       </div>
     </div>

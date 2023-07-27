@@ -86,9 +86,9 @@ const Body = () => {
           </button>
         </div>
         {/* TOP RATED FEATURE */}
-        <div className="search flex items-center">
+        <div className="search flex items-center ">
           <button
-            className="topRated-btn px-3 py-1 m-0 bg-gray-200 rounded-lg"
+            className="topRated-btn px-3 py-1 bg-gray-200 rounded-lg"
             onClick={() => {
               const filteredResList = listOfRestaurants.filter(
                 (res) => res.data.data.avgRating > 4
@@ -100,10 +100,10 @@ const Body = () => {
           </button>
         </div>
         {/* Set Name through input box */}
-        <div className=" m-4 p-4">
+        <div className="pt-7 m-4 p-4">
           <label>UserName: </label>
           <input
-            className="m-4 border border-solid border-black"
+            className="border border-solid border-black"
             value={loggedInUser}
             onChange={(e) => {
               setUserName(e.target.value);

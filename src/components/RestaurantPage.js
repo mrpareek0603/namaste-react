@@ -8,7 +8,7 @@ import RestaurantCategory from "./RestaurantCategory";
 const RestaurantPage = () => {
   const { id } = useParams();
 
-  const [showIndex,setShowIndex] = useState(null);
+  const [showIndex, setShowIndex] = useState(null);
 
   //
   // using customHook for data retrieval
@@ -21,16 +21,19 @@ const RestaurantPage = () => {
   const { name, cuisines, costForTwoMessage, cloudinaryImageId } =
     resMenu?.cards[0]?.card?.card?.info;
 
-  const { itemCards } =
-    resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+  // const { itemCards } =
+  //   resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
 
   const categories =
     resMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (category) =>
         category?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    ) || resMenu?.cards[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (category) =>
+        category?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-
   // console.log(categories);
 
   // rendering the JSX
@@ -41,13 +44,13 @@ const RestaurantPage = () => {
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
       {/* categories accordions */}
-      {categories.map((category,index) => (
+      {categories.map((category, index) => (
         // Controlled Componenet --- controlled by it's parent(RestaurantPage)
         <RestaurantCategory
           key={category.card.card.title}
           data={category.card.card}
-          showItems={index===showIndex && true}
-          setShowIndex={()=>setShowIndex(showIndex===index?null:index)}
+          showItems={index === showIndex && true}
+          setShowIndex={() => setShowIndex(showIndex === index ? null : index)}
         />
       ))}
     </div>

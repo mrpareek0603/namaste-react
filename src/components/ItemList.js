@@ -1,7 +1,14 @@
+import { useDispatch } from "react-redux";
 import { CARD_IMAGE } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, isCart }) => {
+
+  const dispatch = useDispatch();
   // console.log("---items inside itemList", items);
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  }
   return (
     <div>
       {items.map((item) => (
@@ -22,10 +29,11 @@ const ItemList = ({ items }) => {
             <p className="text-xs">{item.card.info.description}</p>
           </div>
           <div className="w-3/12 p-4">
-            <div>
-              <button className="p-2 mx-3 rounded-lg bg-black text-white shadow-lg ">
+            <div >
+              {isCart ? null : <button className="p-2 mx-3 rounded-lg bg-black text-white shadow-lg" onClick={() => handleAddItem(item)}>
                 Add +
-              </button>
+              </button>}
+
             </div>
             <div>
               <img src={CARD_IMAGE + item?.card?.info?.imageId} />

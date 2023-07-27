@@ -8,9 +8,14 @@ const useRestaurantPage = (resId) => {
   }, []);
 
   const fetchRestaurantData = async () => {
-    const restaurantData = await fetch(RESTAURANT_URL + resId);
-    const restaurantDataJson = await restaurantData.json();
-    setResInfo(restaurantDataJson.data);
+    try {
+      const restaurantData = await fetch(RESTAURANT_URL + resId);
+      const restaurantDataJson = await restaurantData.json();
+      setResInfo(restaurantDataJson.data);
+    }catch(err){
+      console.error(err);
+    }
+    
   };
   return resInfo;
 };

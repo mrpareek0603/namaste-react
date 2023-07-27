@@ -86,3 +86,17 @@
 - Part 04 (props drilling, context is one of the way to solve problem of props drilling)
 - Created UserContext, added in Header and About component
 - Created input in Nody, and changing its value calls the "setUserName" from the App.js and changes the userName in App.js from the Body.js
+
+# Episode 12
+
+- Theory :-
+- Two libraries React-Redux and Redux-toolkit
+- View dispatch an action, action call the reducer, reducer will change the slice in the store
+- now the view will subscrib the store slice using a selector
+- What we will do :-
+-   0) Install the libraries
+-   i) Build the store 
+-   ii) Connect store to app
+-   iii) make a Slice in store (cartSlice)
+-   iv) dispatch an action
+-   v) Selector
